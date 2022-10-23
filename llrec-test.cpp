@@ -27,6 +27,18 @@ void print(Node* head);
  */
 void dealloc(Node* head);
 
+struct pred { // removes even values from the function
+    bool operator()(int x) 
+    { 
+        if(x % 2 == 0)
+        { 
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
+
 
 Node* readList(const char* filename)
 {
@@ -68,9 +80,6 @@ void dealloc(Node* head)
 // -----------------------------------------------
 
 
-
-
-
 int main(int argc, char* argv[])
 {
     if(argc < 2) {
@@ -84,6 +93,30 @@ int main(int argc, char* argv[])
     Node* head = readList(argv[1]);
     cout << "Original list: ";
     print(head);
+
+    Node* smaller;
+    Node* larger;
+    int input;
+    pred c;
+
+    cout << "choose 1 for pivot and 2 for filter" << endl;
+    cin >> input;
+    if(input == 1)
+    {
+        llpivot(head, smaller, larger, 8);
+        cout << "Small after running llpivot: ";
+        print(smaller);
+        cout << "Large after running llpivot: ";
+        print(larger);
+        cout << "Head is: ";
+        print(head);
+    } else if(input == 2) {
+        head = llfilter(head, c);
+        cout << "Head after running llfilter: ";
+        print(head);
+
+    } 
+    
 
     // Test out your linked list code
 
