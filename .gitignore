@@ -1,0 +1,12 @@
+heap.h.gch
+heap_test/
+llrec-test
+llrec-test.o
+llrec.o
+logicsim/circuit.o
+logicsim/gate.o
+logicsim/logicsim
+logicsim/logicsim.o
+logicsim/plantuml.jar
+logicsim/wire.o
+stack.h.gch
