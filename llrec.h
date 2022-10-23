@@ -2,6 +2,8 @@
 #define LLREC_H
 #include <cstdlib>
 
+#include <iostream>
+
 /**
  * Node struct for both problems
  */
@@ -78,9 +80,31 @@ Node* llfilter(Node* head, Comp pred);
 template <typename Comp>
 Node* llfilter(Node* head, Comp pred)
 {
-    //*********************************************
-    // Provide your implementation below
-    //*********************************************
+  if(head == nullptr)
+  {
+    return NULL;
+  }
+
+  /*
+  if(pred(head->val)) // should remove the current head from the linked list
+  {
+    head = llfilter(head->next, pred);
+    return head;
+
+  } else if (!pred(head->val)) {
+    // do not remove any nodes but still run the recursion for the other nodes
+    
+    head->next = llfilter(head->next, pred);
+    return head;
+  } */
+  
+  head->next = llfilter(head->next, pred); // goes all the way to end of the linked list before running any code / functions
+  if(pred(head->val)) // remove from the linked list
+  {
+    return head->next; // skip this one
+  } else {
+    return head; // leave in the list
+  }
 
 
 }
